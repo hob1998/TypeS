@@ -1,0 +1,182 @@
+WHAT IS TYPESCRIPT
+ TypeScript was a programming language developed by microsoft to
+ address the shortcomings of JavaScript.
+
+ TypeScript is built on top of the standard JavaScript
+ Every valid JavaScript file is supported by TypeScript
+
+ Benefits of TypeScript (JavaScript with type checking):
+    - Static typing
+        + knowing the type of a variable
+    - Code completion
+    - Refactoring
+    - Shorthand notations
+
+TypeScript is full stack
+
+Draw backs of TypeScript:
+    - Compilation of TypeScript
+        + Transpilation is the compiler taking the TS file and compiling it 
+          to a JavaScript file.
+    - Disiplined in coding
+
+SETTING UP THE DEVELOPMENT ENVIRONMENT
+1 Get node
+2 npm install typeScript
+    brew install typeScript
+3 check for TypeScript installation
+    tsc -v
+4 Vsc code
+
+YOUR FIRST TYPESCRIPT PROGRAM (typeScript compiler standard uses JS (ES5))
+- fileName.TS file
+- let Vname: Datatype = 20;
+- init terms:
+    + let
+    + const
+    + var
+- Datatype:
+    + Number
+    + string 
+    + Any 
+    + boolean
+    + null
+    + undefined
+    + object
+    + unknown
+    + never
+    + enum
+    + tuple
+    + Generic
+    + Custom
+
+CONFIGURING THE TYPESCRIPT COMPILER
+1. go to the directory where your using the typeScript
+2. tsc --init
+3. in project go to tsconfig.json
+4. target will hold the js it will right 
+    + clear out the value and do control space to look a valid js version.
+5. rootDir will tell you where your generated typeScript files will go
+    + create a src directory in your project
+    + change rootDir to your src directory (rootDir : "./src")
+6. outDir will show where your generated javaScript files will go
+    + outDir: "./dist"
+7. removeComments should be uncommented and set to true
+    + this will insure your generated javaScript will be shorter
+8. noEmitOnError should be set to true and uncommented
+    + if your code errors out it will not generate any JS file.
+
+* now when you are ready to compile run "tsc" in your project directory via
+the command line and all typesScript files in src will be compiled to the JS
+files in dist. *
+
+
+DEBUGGING TYPESCRIPT FILES
+- goto tsconfig.json
+- enable sourceMap
+- create a launch.json file (via Run and Debug menu)
+    + select node.js from drop down list
+go to launch.json
+    + find "program": "${workspaceFolder}/src/index.js"
+    + below it put ("preLaunchTask": "tsc: build - tsconfig.json")
+goto run and debug menu
+    + set a stop point if needed
+    + launch program F5
+    VARIABLES if you want to watch all variables in your program
+    WATCH if you want to declare variables to watch in your program
+    
+BUILT IN TYPES
+- let sales: number = 123_456_789; (large numbers can be seperated with underscores to make more readable)
+- let course: string = 'typeScript';
+- let is_published: boolean = true;
+    + if you initialize with a detectable datatype typeScript will
+    be able to infer the type of the data you are storing (best practice
+    is still to use the declaration of variables though)
+    + if you dont declare a variable though it will assume that it is type any.
+        ~ let level; // level will be type any //
+
+THE ANY TYPE VARIABLES
+- type any will cover any type of values.
+- it can also change data types at any time
+    + this goes against the whole reason why you use typeScript
+- function Fname(variable: dataType){
+    // body of function
+}
+- to turn off typeScript datatype checker (not recommended)
+    1. go to tsconfig.json
+    2. go to typechecking section
+    3. "strict": true, is the basic type checker
+    4. noImplicitAny: true (not recommended, but you can uncomment it and turn it to false)
+
+ARRAYS
+- let numbers: number[] = [1, 2, 3];
+- if you do not declare what type of array you have it will default to Any
+    EX: let numbers = []; // you should avoid but can hold diffrent value types//
+numbers.forEach(n => n.toString());
+    + numbers is the name of the array
+    + .forEach() is a function that loops over the array
+    + n is the name of the variable that is in the array
+    + => is an arrow function that takes the variable on the left and gets
+        the return of the function on the right.
+
+TUPLES
+- tuples is a new type in TS it is a fixed length array
+- it is commonlly used for a pair of values (they can be diffrent types)
+- let variable: [dataType, dataType] = [1 , "foo"];
+- you can use intellecense for productivity on elements
+- tuplet[0].// a list of intellecense functions will appear //
+- once compiled they will convert to regular javaScript arrays
+- becareful using push it will work still which is an error but it workspaceFolder
+- you can add more than two elements but you loose readablity best practice is to stick to just two elements.
+
+ENUMS
+- A list of related constants 
+- enum NameOfEnmum { Constant1 = 0, Constant2 = 1, Constant3 = 2};
+- all constants will have to have the same data type
+        EX: enum NameOfEnmum { Constant1 = 'a', Constant2 = 'b', Constant3 = 'c'};
+- to access the values in the enum you can use dot notations
+    + let variable: enum = enum.constants;
+- using constants enums will produce optimized JS code
+    + const enum NameOfEnmum { Constant1 = 0, Constant2 = 1, Constant3 = 2};
+
+FUNCTIONS 
+-  function NameOfFunction(parametername: datatype){
+    // body of the function //
+}
+- if you hover over the function name you can view the return type
+- BEST PRACTICE IS TO DECLARE YOUR RETURN TYPE
+    + EX: function NameOfFunction(parametername: datatype): returnDatatype {
+        // body of the function //
+    }
+- in tsconfig you can uncomment "noUnusedParameters" and it will warn you about them
+- in tsconfig you can uncomment "noImplicitReturns" to avoid undefined returns in the JS code
+- in tsconfig you can uncomment "noUnusedLocals" and it will warn you about unused variables
+- you can make parameters optional by using a '?' or by declaring it in the parameters
+    + function NameOfFunction(parametername?: datatype)
+    + function NameOfFunction(parametername = 1234) *BEST PRACTICE*
+
+OBJECTS
+- let ObjName = { key: datatype, key2: datatype};
+- object shapes are not dynamic in TS like in JS
+- you can make keys optional again by using the '?'
+    + EX: let ObjName = { key?: datatype, key2?: datatype};
+- before you make the key optional make sure it conceptually makes sence
+  or you might run into logic errors later down the line
+- readonly modifier can be used on keys to avoid changing them later.
+    + EX: let ObjName = { readonly key: datatype, key2: datatype};
+- to attach a method to the object you want to use the arrow method style.
+    + EX: let ObjName = {key: datatype, methodname: (parametername: datatype) => returndatatype};
+
+
+EXAMPLE FOR OBJECT SECTION
+let employee: {
+    readonly id: number,
+    name: string,
+    retire: (date: Date) => void
+} = {
+    id: 1,
+    name: 'Hunter',
+    retire: (date: Date) => {
+        console.log(date);
+    }
+};
