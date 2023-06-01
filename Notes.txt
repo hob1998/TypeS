@@ -197,4 +197,62 @@ INTERSECTION TYPES
 - to make a Variable more than one data type at the same time
 - let weight: typeAlias & typeAlias;
 - an example could be a UIWidget = Draggable & Resizable;
-- 
+
+
+LITERAL TYPES
+- to limit the values you can assign to the variable
+- let variable: 1 | 2 | 3 | 4 | 5;
+- if the variable is assigned to anything else you will get an error
+  +    type accountyKeys = '124324145' | '1341551345' | '12341514351';
+  +    const customerKey: accountyKeys;
+
+
+NULLABLE TYPES
+- null and undefined types are more often then not not avalible for use in TS
+- However against BEST PRACTICE you can turn off the null checker in tsconfig.json
+- however if you dont want to do that use union operators to include null and undefined types
+- This will help you error trap when nessasary but make sure you write logic around it!
+
+OPTIONAL CHAINING
+- optional chaining is just another option to add error checking to your code
+- if you worry if something is going to comeback null or undefined, you can use a '?'
+- this will be in place of the optional if statements in your code
+    EXAMPLE:
+        console.log(variable?.property)
+            an example for if the variable is possilbly returned null or undefined value
+- you can also use the optional chaining operator to make object properties optional
+- useage for arrays:
+    EX: arrayName?.[0];
+- usages for functions:
+    EX: functionNAME?.(VARIABLES);
+
+NULLISH COAELSCING OPERATOR
+- If you need to fall back to a preffered value (avoiding null and undefined)
+    let speed: number | null;
+    intake the users input
+    speed = UserInput ?? 30;
+
+TYPE ASSERTIONS
+- if you have a gaurentteed element and you need to assert that youll use the 'as' keyword
+- let variable = ObjName.method("whatever") as AssertedDataType;
+OR
+- let variable = <AassertedDataType> ObjName.method("whatever");
+- this doen't allow you to do type conversion
+- understand that id something other than the asserted tyoe is you will get an error
+- ?? USE SPARRINGLY ??
+
+
+THE UNKOWN TYPE
+- to avoid using the any type you can use the unknown type
+- function FName(variable: unkown){
+    // use type Gaurds here to allow the .notation calls (type narrowing)//
+    if (typeof variable === "dataType")
+}
+- preffered over the any type because it forces you to not be lazy and check the type
+
+THE NEVER TYPE
+- to avoid using values that never occur in the program
+- function Infiniteloop(): never { }
+- to get the full value of a never type go to tsconfig and turn allowUnreachableCode into false
+- it will warn you its unreachable code
+
