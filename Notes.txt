@@ -180,3 +180,21 @@ let employee: {
         console.log(date);
     }
 };
+
+TYPE ALIASES(DRY = DONT REPEAT YOURSELF)
+- type TypeName = {
+    // porperties and methods
+}
+
+UNION TYPES
+- variable or function more than one data type
+- variable: number | string;
+- using dot syntax on a union variable will return the quick methods avalible
+  for both types of the variable
+
+
+INTERSECTION TYPES
+- to make a Variable more than one data type at the same time
+- let weight: typeAlias & typeAlias;
+- an example could be a UIWidget = Draggable & Resizable;
+- 
