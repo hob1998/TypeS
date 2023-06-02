@@ -334,3 +334,97 @@ STATIC MEMBERS
   its important to understand that this variable will not belong to any object but will belong 
   to the class instaed.
 - the key word is 'Static'
+
+INHERITANCE
+- in heritance is the example of to classes sharing the same properties or methods
+- The idea is to create a seperated class that owns the shared properites and have
+  the child classes inherit from the parent
+- Parent class = Base or Super class
+- Child class = Derived or Sub class
+- Look at the example in the inheritanceExample.ts file
+- The best practice is to have sperate files for each class
+
+METHOD OVERRIDING
+- method overriding would be used if you need to slightly modify the method of a parent class to 
+  fit the usage of a child class
+- an example of this will be in the inheritanceExample.ts file teacher class 
+- enable the noImplicitOverrides option in the tsconfig.json file
+
+POLYMORPHISM
+- The term refers to the many diffrent forms an object can take form of in the program
+- the inheritanceExample.ts has an example of this
+- Open Closed Principle:
+    + Classes should be open for extension and closed for modification
+
+PRIVATE VS PROTECTED MEMBERS
+- private is only accessible from inside the class 
+- protected in only accessible from inside the class but is also inheritable to a child
+
+ABSTRACT CLASSES AND METHODS
+- abstract classes are used to create child classes to claim full usage of their properties and methods
+- not than when pulling to the child classes you will still need to override the methods of the abstract classes
+- example in the abstractExample.ts file
+
+INTERFACES
+- To define the shape of objects
+- Interface Example.ts has an example of this
+
+UNDERSTANDING THE PROBLEM
+- The idea here is to generate classes and functions that can be more loosly defined as fare as data types goes
+- The Way you would want to use this is to create classes or functions that you would like to use with diffrent data types
+- Example in the genericExample.ts file
+- avoids you having to use ANY to create params
+
+GENERIC CLASS
+- class className<GenericType Parameters> { ... }
+- to add multiple generic use <T, K, V> commas to seperat them
+- make sure that they can be kind of meaningful
+
+GENERIC FUNCTIONS
+- generic function function the same as the classes as far as syntax is concerned
+  but change it to function syntax for it.
+- Something to think about though is creating a Util class to store all your generic
+  functions which will allow you to have them all in one place and having them static
+  will allow you to call directly from the class globally
+
+
+GENERIC INTERFACES
+- Generic seem pretty useful for APIs and such things as you could define an interface
+  for custom API calls. Also if you knew you were going to pass objects made by the interface
+  it allows you to create diffrent kind of child objects from one interface and pass them to 
+  a function without defining every single object in your generic
+
+GENERIC CONSTRAINTS
+- generic constraints are away for you to get a little more control on the generic usage
+  instead of typing out every possible option in you parameters followed by a ? you can use
+  contraints.
+- genericExample.ts will have an example of this.
+
+EXTENDING GENERIC CLASSES
+- examples are on genericExample.ts
+- You pass on to make sure that the generic classes are the same type of Generic 
+- You extend it to narrow down the generic in the child/sub class
+- You fix the generic in the child/sub class to make sure only one type of your generic can 
+  be used
+
+THE KEYOF OPERATOR
+- the key of operator allow you to keep in mind when your trying to send generics objects through
+  a child class key off will allow you to reference the parent class or interface to make sure that
+  the only keys that can be passed through are directly linked to the parent object
+- Example on KeyOfExample.ts
+
+TYPE MAPPING
+- Examples of creating your own are in the typeMapping.ts file
+- Alternatively you can google "typescript utility types" to see examples
+
+WHAT ARE DECORATORS
+- Decorators are attributes that we apply to classes and their members and we can change how they 
+  behave
+- type script has no built in decorators so we have to build our own.
+- DecoratorExamples.ts has the examples.
+- They are functions called by the JavaScript compiler at runtime to change how your classes run and functions
+- They can also add properties to your classes as needed.
+- To use these you have to turn on "experimentalDecorators" in tsconfig.json 
+
+CLASS DECORATORS
+- 
