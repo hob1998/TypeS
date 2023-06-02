@@ -256,3 +256,81 @@ THE NEVER TYPE
 - to get the full value of a never type go to tsconfig and turn allowUnreachableCode into false
 - it will warn you its unreachable code
 
+WHAT IS OBJECT ORIENTED PROGRAMMING
+- Object have two basic properties
+    + Data (state)
+    + operations (behavior)
+        ~~~~~~~~~~Example~~~~~~~~~~~~~~
+        Object Person
+        Properties:
+            Name
+            Email
+        Methods:
+            Talk()
+            Dance()
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Each object has a single task it takes care of 
+
+*THINK ABOUT TAKING DESIGN PATTERNS AFTER THIS*
+
+CREATING CLASSES
+- A class is a blue print for creating objects
+- Look at classExample.ts for an example
+- note that when you create a the variable in TS they wont exist in your JS code
+
+
+CREATING OBJECTS
+-look at classExample.ts for an example
+- when creating a new object you will use the 'new' keyword
+- you will the fill in the properties of the object in like arguments of a function
+- To test the class and object you can use the following code:
+    + 1. Compile the program via tsc in terminal
+    + 2. Run the program using node 'node dist/nameOfFile.js'
+- Important to remember that you will test via the JS file not the TS file 
+- when attempting to Narrow check an object being passed to a function you will
+  want to you the instanceof check not the typeof check
+        + classExample.ts for an example of this 
+    
+READ-ONLY AND OPTIONAL PROPERTIES 
+- Read-only properties
+    +this style of object creation will allow you to more robustly create objects so
+     that they are not modified later on 'readonly' properties
+- Optional properties
+    + this style of object creation will allow you to more robustly create objects so
+      that certain properties do not have to be set on the object during creation '?' properties
+
+
+ACCESS CONTROL KEYWORDS
+- access modifiers are to protect your object from being modified in a undesired way
+    + public
+    + private
+    + protected
+
+PARAMETER PROPERTIES
+- Not that when making a class instead of creating your object parameter outside of the construcor
+  you can do it inside the constructors parameters but you will need to state the access keywords 
+  with it as well as any optional properties (such as read-only, optional)
+- for an example of this look at the classExample.ts
+
+GETTERS AND SETTERS
+- getter and setters are ways to protect your object from being modified but still having the access
+  to modify the object with logic as needed
+- BEST PRACTICE:
+    + best practice is to use getter and setter instead of modifying the object directly as you can add
+      reusable logic as needed.
+
+INDEX SIGNATURES
+- you cant usually add properties to an object dynamically because typeScript is strict on the shape of objects
+  this is where you would use index signature
+- the idea would be to add a property that is a custom name that will also point to a custom value
+- the way to do this is 
+- class ClassName{
+    [propertyName: datatype]: propertyThatItWillPointToDataType;
+}
+- indexSignaturesExample.ts has an example of this
+
+STATIC MEMBERS
+- If you need to keep track of a variable across all your objects, you can use a Static
+  its important to understand that this variable will not belong to any object but will belong 
+  to the class instaed.
+- the key word is 'Static'
