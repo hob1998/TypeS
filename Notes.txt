@@ -426,5 +426,45 @@ WHAT ARE DECORATORS
 - They can also add properties to your classes as needed.
 - To use these you have to turn on "experimentalDecorators" in tsconfig.json 
 
-CLASS DECORATORS
+DECORATORS
+- for all decorator examples check DecoratorExamples.ts
+
+MODULES
+- modules are important to have because as programs grow you will want to keep your code organized so that it is 
+  easy to view and mold
+- Each "category" of classes should have its own module or file
+- the syntax of importing a module is:
+    + import {exportedClassName} from './nameOfFile'
+    + if you need to go one file up youll use multiple periods:
+        + import {exportedClassName} from '../shapes'
+
+MODULE FORMATS
+- note that modules look very diffrent in JS code 
+- to get more documentation look up 'Javascript exports and require statements'
+- in tsconfig.json under "module" you can see what kind of module generation you are using.
+- the common one is the ES2015
+
+DEFAULT EXPORTS (MORE OF A READABLITY THING THAN ANYTHING)
+- A module should be like a remote control with very few buttons to use but enough to get the jobs done.
+- This is so your dependancies do not go crazy and you can still work with them.
+- if you only plan to export one class from a module an idea would be to 'export default' the Object
+
+WILDCARD IMPORTS
+- if you import any more than 5 things from another file you should use a wild card import
+- the syntax for this is
+- import * as nameOfBucket from "./shapes";
+- examples of wildcard imports are in the file ModulesExample.ts
+
+RE-EXPORTING
+- the idea here is to combine multiple import into one import statement using a file.
+- the idea here is to creat a folder (still in the src folder)
+- once done with that create a index.ts file in that folder
+- now import all your modules into file and export them together via obj notation
+        + export {module1,module2}
+- now back in your main app or main index.ts file use the regular import statement just to
+  the new index.ts file or do a Wildcard import from that new file
+- ITS BEST PRACTICE TO ONLY DO THIS WITH MODULES THAT ARE RELATED THAT WAY YOUR BUCKET MAKES SENSE.
+
+
+REACT WITH TYPESCRIPT
 - 

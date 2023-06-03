@@ -79,3 +79,18 @@ class Person2 {
 
 const nathan = new Person2('rex', 'obrien');
 console.log(nathan.fullName)
+
+
+// Practice problem with Decorators in 7- Decorators Exercises.pdf //
+
+function Sauce(newSauce: string) {
+    return (constructor: Function) => {
+        constructor.prototype.sauce = newSauce;
+    };
+
+
+}
+@Sauce('pesto')
+class Pizza {
+
+}
